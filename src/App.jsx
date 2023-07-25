@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import axios from "axios";
+import Axios from "../axios.config.js";
 import { format } from "timeago.js";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const res = await axios.get("/pins");
+        const res = await Axios.get("/pins");
         setPins(res.data);
       } catch (error) {
         console.log(error);
@@ -61,7 +61,7 @@ function App() {
       long: newPlace.long,
     };
     try {
-      const res = await axios.post("/pins", newPin);
+      const res = await Axios.post("/pins", newPin);
       setPins([...pins, res.data]);
       setNewPlace(null);
     } catch (error) {

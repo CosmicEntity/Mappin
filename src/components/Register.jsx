@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./register.css";
 import { Close, Room } from "@material-ui/icons";
-import axios from "axios";
+import Axios from "../../axios.config.js";
 
 const Register = ({ setShowRegister }) => {
   const [success, setSuccess] = useState(false);
@@ -19,7 +19,7 @@ const Register = ({ setShowRegister }) => {
       password: passwordRef.current.value,
     };
     try {
-      await axios.post("/users/register", newUser);
+      await Axios.post("/users/register", newUser);
       setSuccess(true);
       setError(false);
     } catch (error) {

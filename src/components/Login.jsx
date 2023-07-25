@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./login.css";
 import { Close, Room } from "@material-ui/icons";
-import axios from "axios";
+import Axios from "../../axios.config.js";
 
 const Login = ({ setShowLogin, myStorage, setCurrentUser }) => {
   const [error, setError] = useState(false);
@@ -16,7 +16,7 @@ const Login = ({ setShowLogin, myStorage, setCurrentUser }) => {
       password: passwordRef.current.value,
     };
     try {
-      const res = await axios.post("/users/login", user);
+      const res = await Axios.post("/users/login", user);
       myStorage.setItem("user", res.data.username);
       setCurrentUser(res.data.username);
       setError(false);
