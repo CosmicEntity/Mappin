@@ -15,7 +15,7 @@ function App() {
   const [viewport, setViewport] = useState({
     longitude: 78.9629,
     latitude: 20.5937,
-    zoom: 4,
+    zoom: 2.75,
   });
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
