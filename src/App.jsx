@@ -87,7 +87,7 @@ function App() {
         onMove={(event) => setViewport(event.viewState)}
       >
         {pins.map((p) => (
-          <div>
+          <div key={p._id}>
             <Marker
               longitude={p.long}
               latitude={p.lat}

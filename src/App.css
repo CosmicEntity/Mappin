@@ -33,6 +33,9 @@ label {
   border-bottom: 1px solid tomato;
   margin: 3px 0;
 }
+.place {
+  font-size: 14px;
+}
 
 .desc {
   font-size: 14px;
@@ -111,14 +114,14 @@ textarea::placeholder {
 }
 
 .legends {
-  width: 225px;
+  width: 200px;
   background-color: white;
   border-radius: 10px;
   position: absolute;
   display: flex;
   flex-direction: column;
   padding: 5px;
-  bottom: 30px;
+  top: 50px;
   right: 10px;
   opacity: 0.8;
 }
