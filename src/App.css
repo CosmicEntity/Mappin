@@ -109,3 +109,50 @@ textarea::placeholder {
   top: 10px;
   right: 10px;
 }
+
+.legends {
+  width: 225px;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  top: 10px;
+  left: 10px;
+  opacity: 0.8;
+}
+
+.legend-title {
+  font-size: 16px;
+  text-decoration: underline;
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+.user-marker {
+  color: slateblue;
+}
+
+.your-marker {
+  color: tomato;
+}
+
+.misc {
+  color: gray;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.you {
+  display: flex;
+  align-items: center;
+}
+
+.instruction {
+  display: flex;
+  align-items: center;
+}

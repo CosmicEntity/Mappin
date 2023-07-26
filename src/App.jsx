@@ -3,7 +3,7 @@ import Axios from "../axios.config.js";
 import { format } from "timeago.js";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Room, Star } from "@material-ui/icons";
+import { Room, Star, FiberManualRecordRounded } from "@material-ui/icons";
 import "./App.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -107,7 +107,7 @@ function App() {
               <Popup
                 longitude={p.long}
                 latitude={p.lat}
-                anchor="top-left"
+                anchor="top"
                 offset={[0, -12]}
                 closeOnClick={false}
                 onClose={() => setCurrentPlaceId(null)}
@@ -201,6 +201,23 @@ function App() {
             setCurrentUser={setCurrentUser}
           />
         )}
+        <div className="legends">
+          <p className="legend-title">LEGENDS</p>
+          <p className="user">
+            <FiberManualRecordRounded className="user-marker" /> User Pin(s)
+          </p>
+          <p className="you">
+            <FiberManualRecordRounded className="your-marker" /> Your Pin(s)
+          </p>
+          <p className="instruction">
+            <FiberManualRecordRounded className="misc" /> Click Pin to view
+            Info.
+          </p>
+          <p className="instruction">
+            <FiberManualRecordRounded className="misc" /> Double click to add a
+            Pin
+          </p>
+        </div>
       </Map>
     </div>
   );
