@@ -118,8 +118,8 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   padding: 5px;
-  top: 10px;
-  left: 10px;
+  bottom: 30px;
+  right: 10px;
   opacity: 0.8;
 }
 
