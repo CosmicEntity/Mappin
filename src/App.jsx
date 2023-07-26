@@ -47,7 +47,7 @@ function App() {
     const long = event.lngLat.lng;
     const lat = event.lngLat.lat;
 
-    setNewPlace({ lat, long });
+    currentUser && setNewPlace({ lat, long });
   };
 
   const handleSubmit = async (event) => {
