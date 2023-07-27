@@ -4,6 +4,7 @@ import { format } from "timeago.js";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Room, Star, FiberManualRecordRounded } from "@material-ui/icons";
+import { Triangle } from "react-loader-spinner";
 import "./App.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -25,12 +26,14 @@ function App() {
   const [rating, setRating] = useState(0);
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getPins = async () => {
       try {
         const res = await Axios.get("/pins");
         setPins(res.data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -86,51 +89,67 @@ function App() {
         onDblClick={handleAddClick}
         onMove={(event) => setViewport(event.viewState)}
       >
-        {pins.map((p) => (
-          <div key={p._id}>
-            <Marker
-              longitude={p.long}
-              latitude={p.lat}
-              anchor="bottom"
-              offset={[0, 0]}
-            >
-              <Room
-                style={{
-                  fontSize: viewport.zoom * 10,
-                  color: p.username === currentUser ? "tomato" : "slateblue",
-                  cursor: "pointer",
-                }}
-                onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
-              />
-            </Marker>
-            {p._id === currentPlaceId && (
-              <Popup
+        {loading ? (
+          <Triangle
+            height="80"
+            width="80"
+            color="slateblue"
+            ariaLabel="triangle-loading"
+            visible={true}
+            wrapperStyle={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        ) : (
+          pins.map((p) => (
+            <div key={p._id}>
+              <Marker
                 longitude={p.long}
                 latitude={p.lat}
-                anchor="top"
-                offset={[0, -12]}
-                closeOnClick={false}
-                onClose={() => setCurrentPlaceId(null)}
+                anchor="bottom"
+                offset={[0, 0]}
               >
-                <div className="card">
-                  <label>Place</label>
-                  <h4 className="place">{p.title}</h4>
-                  <label>Review</label>
-                  <p className="desc">{p.desc}</p>
-                  <label>Rating</label>
-                  <div className="stars">
-                    {Array(p.rating).fill(<Star className="star" />)}
+                <Room
+                  style={{
+                    fontSize: viewport.zoom * 10,
+                    color: p.username === currentUser ? "tomato" : "slateblue",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
+                />
+              </Marker>
+              {p._id === currentPlaceId && (
+                <Popup
+                  longitude={p.long}
+                  latitude={p.lat}
+                  anchor="top"
+                  offset={[0, -12]}
+                  closeOnClick={false}
+                  onClose={() => setCurrentPlaceId(null)}
+                >
+                  <div className="card">
+                    <label>Place</label>
+                    <h4 className="place">{p.title}</h4>
+                    <label>Review</label>
+                    <p className="desc">{p.desc}</p>
+                    <label>Rating</label>
+                    <div className="stars">
+                      {Array(p.rating).fill(<Star className="star" />)}
+                    </div>
+                    <label>Information</label>
+                    <span className="username">
+                      Created by <b>{p.username}</b>
+                    </span>
+                    <span className="date">{format(p.createdAt)}</span>
                   </div>
-                  <label>Information</label>
-                  <span className="username">
-                    Created by <b>{p.username}</b>
-                  </span>
-                  <span className="date">{format(p.createdAt)}</span>
-                </div>
-              </Popup>
-            )}
-          </div>
-        ))}
+                </Popup>
+              )}
+            </div>
+          ))
+        )}
         {newPlace && (
           <Popup
             longitude={newPlace.long}

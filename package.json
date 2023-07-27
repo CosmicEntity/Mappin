@@ -1,5 +1,5 @@
 {
-  "homepage":"https://cosmicentity.github.io/Mappin",
+  "homepage": "https://cosmicentity.github.io/Mappin",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
@@ -20,6 +20,7 @@
     "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-map-gl": "^7.1.3",
     "timeago.js": "^4.0.2"
   },
