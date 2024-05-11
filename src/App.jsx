@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import Axios from "../axios.config.js";
 import { format } from "timeago.js";
 import Map, { Marker, Popup } from "react-map-gl";

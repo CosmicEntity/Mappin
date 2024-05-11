@@ -36,7 +36,9 @@ const Login = ({ setShowLogin, myStorage, setCurrentUser }) => {
         <input type="text" placeholder="Username" ref={nameRef} />
         <input type="password" placeholder="Password" ref={passwordRef} />
         <button className="login-button">Login</button>
-
+        <span className="test-credentials">
+          Testing Credentials: "Tester", "123456"
+        </span>
         {error && <span className="failure">Username or Password wrong.</span>}
       </form>
       <Close className="login-cancel" onClick={() => setShowLogin(false)} />
